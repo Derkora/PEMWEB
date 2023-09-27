@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jadwal Waktu</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <figure>
+        <img src="https://uisi.ac.id/assets/upload/article/1280x572/1983f2abad131a858b9e029649cf0fdc.JPG" alt="Deskripsi Gambar">
+        <figcaption>Gambar ITS</figcaption>
+    </figure>
+
+    <div>
+        <p>ini adakah jadwal kuliah semester 3 kelas B</p>
+    </div>
+    
+    <ul>
+        <li>Sisop</li>
+        <li>SBD</li>
+        <li>Pemweb</li>
+        <li>TKA</li>
+        <li>Strukdat</li>
+        <li>AE</li>
+    </ul>
+
+    <h1>Jadwal Waktu</h1>
+    <table>
+        <tr>
+            <th>Hari</th>
+            <th>Jam</th>
+            <th>Mata kuliah</th>
+            <th>Kegiatan</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>Senin</td>
+            <td>13:30 - 16:20</td>
+            <td>Sistem Operasi</td>
+            <td><select id="kegiatan1" name="kegiatan1">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi1" name="deskripsi1" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+        <tr>
+            <td>Selasa</td>
+            <td>10:00 - 12:55</td>
+            <td>Sistem Basis Data</td>
+            <td><select id="kegiatan2" name="kegiatan2">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi2" name="deskripsi2" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+        <tr>
+            <td>Rabu</td>
+            <td>10:00 - 12:55</td>
+            <td>Pemrograman Web</td>
+            <td><select id="kegiatan" name="kegiatan">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi2" name="deskripsi2" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+        <tr>
+            <td>Rabu</td>
+            <td>13.30 - 16:20</td>
+            <td>Teknologi Komputasi Awan</td>
+            <td><select id="kegiatan" name="kegiatan">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi2" name="deskripsi2" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+        <tr>
+            <td>Kamis</td>
+            <td>13.30 - 16:20</td>
+            <td>Struktur Data</td>
+            <td><select id="kegiatan" name="kegiatan">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi2" name="deskripsi2" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+        <tr>
+            <td>Jumat</td>
+            <td>08:00 - 10:55</td>
+            <td>Arsitektur Enterprise</td>
+            <td><select id="kegiatan" name="kegiatan">
+                <option value="-">-</option>
+                <option value="Tugas">Tugas</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Presentasi">Presentasi</option>
+            </select></td>
+            <td><input type="text" id="deskripsi2" name="deskripsi2" placeholder="Deskripsi kegiatan"></td>
+        </tr>
+    </table>
+
+
+    <form>
+        <label for="hari">Hari:</label>
+        <input type="text" id="hari" name="hari">
+        <label for="jam">Jam:</label>
+        <input type="text" id="jam" name="jam">
+        <label for="matakuliah">Mata Kuliah:</label>
+        <input type="text" id="matakuliah" name="matakuliah">
+        <label for="kegiatan">Kegiatan:</label>
+        <select id="kegiatan" name="kegiatan">
+            <option value="-">-</option>
+            <option value="Tugas">Tugas</option>
+            <option value="Quiz">Quiz</option>
+            <option value="Presentasi">Presentasi</option>
+        </select>
+        <label for="deskripsi">Deskripsi:</label>
+        <input type="text" id="deskripsi" name="deskripsi" placeholder="Deskripsi kegiatan">
+        <input type="submit" value="Tambah Jadwal">
+    </form>
+</body>
+</html>
