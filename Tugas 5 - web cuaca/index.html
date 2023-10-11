@@ -1,90 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <style>
-      .container {
-        text-align: center;
-        margin-top: 50px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
 
-      .weather-box {
-        background-color: #f0f0f0;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body id="page-top">
-    <div class="container">
-      <h1>Weather in Surabaya</h1>
-      <button onclick="infoCuacaSurabaya()">Get Weather Info</button>
-      <div class="weather-box">
-        <h3 id="infoKota"></h3>
-        <p id="infoDesk"></p>
-        <p id="infoAwan"></p>
-        <p id="infoSuhu"></p>
-        <p id="infoKelembapan"></p>
-        <p id="infoTekanan"></p>
-        <p id="infoAngin"></p>
+    .weather-box {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body id="page-top" onload="infoCuacaSurabaya()">
+  <div class="container">
+    <h1>Cuaca di Surabaya</h1>
+    <div class="weather-box">
+      <div class="row">
+        <div class="col-lg mb-4">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-city fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoKota"></div>
+                  <div class="mb-0 fw-medium text-secondary">Kota</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg mb-4">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-weight fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoTekanan"></div>
+                  <div class="mb-0 fw-medium text-secondary">Tekanan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg mb-4">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-cloud fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoAwan"></div>
+                  <div class="mb-0 fw-medium text-secondary">Awan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg mb-4">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-wind fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoAngin"></div>
+                  <div class="mb-0 fw-medium text-secondary">Angin</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg mb-3">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-tint fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoKelembapan"></div>
+                  <div class="mb-0 fw-medium text-secondary">Kelembapan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg mb-3">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-regular fa-comment-alt fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoDesk"></div>
+                  <div class="mb-0 fw-medium text-secondary">Keadaan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg mb-3">
+          <div class="card border-0 rounded-0 shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                  <i class="fa-solid fa-thermometer-half  fa-3x text-info"></i>
+                </div>
+                <div class="col-auto text-end">
+                  <div class="h2 text-xs fw-semibold text-uppercase mb-1" id="infoSuhu"></div>
+                  <div class="mb-0 fw-medium text-secondary">Suhu</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <script>
+    function infoCuacaSurabaya() {
+      const datas = new XMLHttpRequest();
+      datas.open(
+        'GET',
+        'https://api.openweathermap.org/data/2.5/weather?q=Surabaya&appid=c347d06fd84b8f14296f082d6b5465a1',
+        true
+      );
 
-    <script>
-      function infoCuacaSurabaya() {
-        const datas = new XMLHttpRequest();
-        datas.open(
-          'GET',
-          `https://api.openweathermap.org/data/2.5/weather?q=Surabaya&appid=c347d06fd84b8f14296f082d6b5465a1`,
-          true
-        );
+      datas.onload = function () {
+        if (datas.status >= 200 && datas.status < 400) {
+          const response = JSON.parse(datas.responseText);
 
-        datas.onload = function () {
-          if (datas.status >= 200 && datas.status < 400) {
-            const response = JSON.parse(datas.responseText);
+          const kota = response.name;
+          const awan = response.clouds.all;
+          const suhu = response.main.temp - 273;
+          const roundedsuhu = suhu.toFixed(2);
+          const kelembapan = response.main.humidity;
+          const tekanan = response.main.pressure;
+          const angin = response.wind.speed;
+          const deskripsi = response.weather[0].description;
 
-            const kota = response.name;
-            const awan = response.clouds.all;
-            const suhu = response.main.temp - 273;
-            const kelembapan = response.main.humidity;
-            const tekanan = response.main.pressure;
-            const angin = response.wind.speed;
-            const deskripsi = response.weather[0].description;
+          document.getElementById('infoKota').textContent = kota;
+          document.getElementById('infoDesk').textContent = deskripsi;
+          document.getElementById('infoAwan').textContent = `${awan}%`;
+          document.getElementById('infoSuhu').textContent = `${roundedsuhu}°C`;
+          document.getElementById('infoKelembapan').textContent = `${kelembapan}%`;
+          document.getElementById('infoTekanan').textContent = `${tekanan} hPa`;
+          document.getElementById('infoAngin').textContent = `${angin} m/s`;
+        }
+      };
 
-            console.log(response);
-            document.getElementById('infoKota').innerHTML = `City: ${kota}`;
-            document.getElementById('infoDesk').innerHTML = `Weather: ${deskripsi}`;
-            document.getElementById('infoAwan').innerHTML = `Clouds: ${awan}%`;
-            document.getElementById('infoSuhu').innerHTML = `Temperature: ${suhu}°C`;
-            document.getElementById('infoKelembapan').innerHTML = `Humidity: ${kelembapan}%`;
-            document.getElementById('infoTekanan').innerHTML = `Pressure: ${tekanan} hPa`;
-            document.getElementById('infoAngin').innerHTML = `Wind Speed: ${angin} m/s`;
-          }
-        };
-
-        datas.send();
-      }
-    </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
-      integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+      datas.send();
+    }
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+    integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

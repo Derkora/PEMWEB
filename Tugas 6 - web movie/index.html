@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Info</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+  >
+  <style>
+    .card {
+      background-color: #f2f2f2;
+      margin: 20px;
+    }
+    .poster {
+      width: 200%; /* Mengatur lebar poster menjadi 100% dari kontainernya */
+      height: auto; /* Mengatur ketinggian otomatis untuk menjaga proporsi aslinya */
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container mt-3">
+    <h1 class="text-center">Movie Information</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div class="input-group mb-3">
+          <input type="text" id="movie-input" class="form-control" placeholder="Movie Title">
+          <div class="input-group-append">
+            <button id="search-movie" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center" id="movie-results">
+    </div>
+  </div>
+  <script>
+      $('#search-movie').click(function () {
+        const movieTitle = $('#movie-input').val();
+        const apiKey = '37bc682d';
+        const apiUrl = `http://www.omdbapi.com/?s=${movieTitle}&apikey=${apiKey}`;
+
+        $.get(apiUrl, function (data) {
+          if (data.Response === 'True') {
+            $('#movie-results').empty();
+            for (let i = 0; i < 10 && i < data.Search.length; i++) {
+              const movie = data.Search[i];
+              const movieCard = createMovieCard(movie);
+              $('#movie-results').append(movieCard);
+            }
+          } else {
+            $('#movie-results').html('No results found');
+          }
+        });
+      });
+
+      function createMovieCard(movie) {
+        const movieCard = $('<div>').addClass('card col-md-2 mb-2');
+        const cardBody = $('<div>').addClass('card-body');
+        const movieTitle = $('<h5>').addClass('card-title').text(movie.Title);
+        const movieYear = $('<p>').addClass('card-text').text(`Year: ${movie.Year}`);
+        const moviePlot = $('<p>').addClass('card-text').text('Loading plot...');
+
+        const moviePoster = $('<img>').addClass('card-img-top').attr('src', movie.Poster);
+
+        cardBody.append(movieTitle, movieYear, moviePlot);
+        movieCard.append(moviePoster, cardBody);
+
+        fetchMoviePlot(movie.imdbID, moviePlot);
+
+        return movieCard;
+      }
+
+      function fetchMoviePlot(imdbID, plotElement) {
+        const apiKey = '37bc682d';
+        const plotUrl = `http://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`;
+
+        $.get(plotUrl, function (data) {
+          if (data.Response === 'True') {
+            plotElement.text(data.Plot);
+          } else {
+            plotElement.text('Plot not found');
+          }
+        });
+      };
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+</html>
